@@ -1,0 +1,26 @@
+QUESTIONS to think about???
+
+
+--------------- Tutorial 1 -----------------------------
+What is Data?
+What Types of Structured data do we have?
+How can data become useful?
+Why do we process data?
+What is Big data?
+What lead to the growth of big data?
+
+What is the relational database common language used for?
+What do you understand from the word structure in SQL (structure query language)?
+
+Database Definintion:  A database is a collection of records stored on some type of media.
+How can we expand the word media in the definition?
+
+What are Advantages and disadvantages of creating a Database and having one?
+How can you define storage in the past?
+
+What is the process of creating a database?
+How can good data practice be ensured?
+
+What does data security mean in database design?
+What effect does automated data collection have on Database design?
+--------------------- End --------------------------------------

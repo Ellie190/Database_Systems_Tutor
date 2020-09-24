@@ -1,0 +1,172 @@
+CHANGING DATA INTO INFORMATION 
+
+DATA
+- Raw facts stored in databases
+- Need additional processing to become useful 
+
+DATA STRUCTURES 
+- Structured data: The data that does have a proper format associated to it. 
+e.g data present in Databases, csv files and xls spreadsheets
+
+- Semi Structured data: The data that does not have a proper format associated to it 
+e.g  data present in emails, log files and word documents 
+
+Unstructured data: The data that does not have any format associated to it 
+e.g Image files, audio files, video files 
+
+INFORMATION
+- Required by decision maker 
+- Data processed and presented in a meaningful form
+- Transformation 
+
+INFORMATION SYSTEMS 
+DATABASES 
+- Carefully designed and constructed repository of facts 
+- Part of an information system
+
+INFORMATION SYSTEM
+- Provides data collection, storage, and retrieval 
+- Facilitates data transformation
+- Components include: [People, hardware, software (databases, application programs and procedures) 
+
+BIG DATA 
+- A collection of large or complex data sets that cannot be processed by traditional data processing applications. 
+- The presence of big data lead to the growth of mining data sets so as to extract valuable information within data sets. 
+
+------------------------------------------------------------ENTITY RELATIONSHIPS--------------------------------------------------------------------------- 
+
+RULES 
+- Create the databases (explanation) # SPU scenario 
+- store and manipulate the data within it (explanation)
+- manage security (explanation) #SPU scenario, different departments 
+
+LANGUAGE 
+SQL: structured query language
+NB: The word structured 
+
+DATABASE (Define)
+- A database is a collection of records stored on some type of media. 
+- Media, seems vague ??? HOW CAN WE EXPAND ON IT?
+
+STORAGE in the Past ??? WHAT IS YOUR TAKE?
+(files, and etc...,)
+Growth of DATA???
+
+??? FIELDS e.g 
+Surname, Forename, DOB, Department, Address, Gender, Salary
+
+ADVANTAGES 
+- Reduced data redundancy 
+- Improved data access
+- Improved data security 
+- Reduced costs for data entry, storage, and retrieval (storage in files)
+
+DISADVANTAGES/LIMITATIONS
+- Database systems are complex, difficult, and time-consuming to design. 
+- COSTY PROCESS 
+- Initial training required for all programmers and users
+
+CREATING A DATABASE 
+2 MAIN STAGES 
+
+STAGE 1
+DATA ANALYSIS: Involves using a formalised methodology to create a database design. 
+Methods 
+
+ENTITY RELATIONSHIP MODELLING (ER)
+Normalisation 
+
+STAGE 2 
+PHYSICAL IMPLEMENTATION 
+- of that design in a database system 
+- e.g., oracle - (RDBMS) from Orcale corporation 
+- e.g., MySQL (open source), DB2 (IBM), SQL Server (Microsoft)
+
+TERMINOLOGY 
+ER: Entity (Dataframe), Entity Occurrence (Row), Attribute (Column) Atomic data (C1R1[1], value)
+Normalisation: Relation (dataframe), Tuple (n-tuple) (Row), Domain (column), atomic data (value)
+RDBMS: Table (Dataframe), Row or Record (Row), Column or Field (Column)
+
+Stands for "Relational Database Management System." An RDBMS is a DBMS designed specifically for relational databases.
+Therefore, RDBMSes are a subset of DBMSes.
+A relational database refers to a database that stores data in a structured format, using rows and columns.
+
+DATABASE DEDINED AGAIN
+A database is made up of a set of tables (Entities/Relations)
+
+ENTITY 
+An entity is any object in the system that we want to model and store information about. (Entity occurence)
+E.g Places, SPU, Dogs, Cats, Cars, Watches, Haberlife, Cricket, Soccer, FeesMustFall, Employee, Student, Global warming,
+ KFC Wedding, OS Virsus. 
+ 
+ATTRIBUTE 
+An attribute is an item of information which is stored about an entity. 
+e.g, student_info -> surname, tweet, price, os, make (Projects)
+
+RELATIONSHIP 
+- A relationship is an association (link) of entities where (Friendship, GF/BF relationship )
+  the association includes one entity from each participating entity type. 
+  
+- A relationship is established by a foreign key in one enity linking to the primary key in another 
+
+DEGREES OF RELATIONSHIPS (CARDINALITY)
+- Degree of relationship is the number of occurences in one entity which are associated (or linked) to 
+  the number of occurences in another. 
+  
+TYPES OF DEGREES
+
+One-to-One (1:1) (1 man is married to 1 Woman) In to today's world???
+One-to-Many (1:M) (1 manager manages many employees) TUTOR???
+Many-to-Many (M:N) (Many lecturers teaches many students) ???
+ 
+KEYS
+- A key is data item that allows us to uniquely identify individual occurences or an entity type. 
+- Key(s) can be one or more fields (attributes) 
+- Advantage: sorting and quick retrival of information from a database
+
+PRIMARY KEY  
+- consists of one or more attributes that distinguishes a specific record from any other
+- In the table only one UNIQUE number exists and acts as the primary key for each record
+- A primary key is mandatory. That is, each entity occurrence must have a value for its primary key.
+e.g. student number, ID number 
+
+SECONDARY KEY 
+- An entity may have one or more choices for the primary key. 
+- Collectively these are known as candidate keys. 
+- One is selected as the primary key. 
+- Those not selected are known as secondary keys.
+- For example, a student has a student number, a Identity number (Id) number and an email address. 
+
+FOREIGN KEY 
+- A foreign key is one or more attributes in one entity, which enables a link (or relationship) to another entity. 
+- A foreign key in one entity links to a primary key in another entity. 
+
+SIMPLE KEYS 
+- A simple key consists of a single attribute to uniquely identify an entity occurrence 
+e.g., for example, a student number, uniquely identifies a particular student. 
+
+COMPUND KEY
+- consists of more than one attribute to uniquely identify an entity occurrence.
+
+Composite Key 
+- A composite key consists of more than one attribute to uniquely identify an entity occurrence. 
+- This differs from a compound key in that one or more of the attributes, which make up the key, are not simple keys in their own right.
+
+-----------------------------------------------------------------SQL---------------------------------------------------------------
+SQL is a language that can be used to create, store and manipulate data in a database and manage security 
+
+TYPES of Commands 
+
+DDL: Data Definition Language
+This includes changes to the structure of the table like creation of table, altering table, deleting a table etc.
+
+DML: Data Manipulation Language
+DML commands are used for manipulating the data stored in the table and not the table itself.
+
+TCL: Transaction Control Language
+These commands are to keep a check on other commands and their affect on the database.
+These commands can annul changes made by other commands by rolling the data back to its original state. 
+It can also make any temporary change permanent.
+
+DQL: Data Query Language
+Data query language is used to fetch data from tables based on conditions that we can easily apply.
