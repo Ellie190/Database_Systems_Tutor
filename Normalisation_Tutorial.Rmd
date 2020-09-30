@@ -1,0 +1,175 @@
+---
+title: "Normalisation Tutorial"
+author: "Database Systems Tutor"
+date: "30/09/2020"
+output: html_document
+---
+
+# Required libraries 
+```{r warning=FALSE, message=FALSE}
+# Libraries for some functions used 
+library(stringr)
+library(tidyverse)
+library(knitr)
+library(DT)
+library(rpivotTable)
+library(openintro)
+```
+
+# Normalisation 
+- Normalisation is a data analysis technique to design a database system. 
+- It allows the database designer to understand the current data structures in an organisation. 
+- it aids any future changes and enhancements to the system.
+- Normalisation is a technique for producing relational schema with the following properties:
+- No Information Redundancy
+- No Update Anomalies
+- The end result of normalisation is a set of entities, which removes unnecessary redundancy (i.e. duplication of data) and    avoids the anomalies which will be discussed next.
+
+# Anomalies 
+- Anomalies are inconvenient or error-prone situation arising when we process the tables. 
+
+3 types of anomalies
+- Update Anomalies 
+- Delete Anomalies 
+- Insert Anomalies
+
+# The Process of Normalisation 
+- Process involves applying a series of tests on a relation to determine whether it satisfies or violates the requirements of a   given normal form.
+- When a test fails, the relation is decomposed into simpler relations that individually meet the normalisation tests.
+- The higher the normal form the less vulnerable to update anomalies the relations become.
+- Three Normal forms: 1NF, 2NF and 3NF were initially proposed by Codd.
+- All these normal forms are based on the functional dependencies among the attributes of a relation.
+
+
+```{r}
+include_graphics("C:/Users/Student/terminology.png")
+```
+
+# Normlisation by Example 
+- Normalisation is a bottom-up technique for database design, normally based on an existing system (which may be paper-based). 
+
+Bottom-up
+- Step 1: Identity data elements 
+- Step 2: Group them into datasets
+    
+Top-down 
+- Step 1: Identity datasets
+- Step 2: Define data elements
+
+
+```{r}
+include_graphics("C:/Users/Student/design.png")
+```
+
+# Example 
+```{r}
+include_graphics("C:/Users/Student/example1.png")
+```
+## UNF: Unnormalised table creation 
+- Dataframe to demonstrate normalization
+- For more information check slides provided in the notes 
+```{r}
+# Creating the attributes with sample values 
+Project_Code <- c("PC010","PC010","PC010","PC045","PC045","PC045","PC045","PC064","PC064","PC064")
+Project_Title <- c("Pensions System","Pensions System","Pensions System","Salaries System",
+                   "Salaries System","Salaries System","Salaries System","HR System",
+                   "HR System","HR System")
+Project_Manager <- c("M Phillips","M Phillips","M Phillips","H Martin","H Martin","H Martin",
+                     "H Martin","K lewis","K lewis","K lewis")
+Project_Budget <- c(24500,24500,24500,17400,17400,17400,17400,12250,12250,12250)
+Employee_No <- c("S10001","S10030","S21010","S10010","S10001","S31002","S13210","S31002",
+                 "S21010","S10034")
+Employee_Name <- c("A Smith","L Jones","P Lewis","B Jones","A Smith","T Gilbert","W Richards",
+                   "T Gilbert","P Lewis","B James")
+Department_No <- c("L004","L023","L004","L004","L004","L028","L008","L028","L004","L009")
+Department_Name <- c("IT","Pesnions","IT","IT","IT","Database","Salary","Database","IT","HR")
+Hourly_Rate <- c(22.00,18.50,21.00,21.75,18.00,25.50,17.00,23.25,17.50,16.50)
+
+# Placing the attributes into a dataframe 
+df <- data.frame(Project_Code,Project_Title,Project_Manager,Project_Budget,Employee_No,Employee_Name,
+                 Department_No, Department_Name, Hourly_Rate)
+```
+
+## Df Table (Unnormalised Form UNF)
+```{r}
+datatable(df, # When placed in UNF possible Key: Project code
+          caption = "Project Management Report Unnormalized Form",
+          rownames = T,
+          filter = "top",
+          options = list(pageLength = 10))
+```
+
+
+# 1NF Tables: Repeating Attributes Removed 
+```{r}
+# selects column 1 to 4 values that are not duplicates 
+df1_1 <- unique(df[, 1:4])
+knitr::kable(head(df1_1),
+             caption = "1NF Table 1")
+# To view entire table run df1_1 on the rmarkdown file 
+```
+
+```{r}
+# The follwing code excludes 2nd, 3rd and 4th column/attributes 
+df1_2 <- df[c(-2,-3,-4)] # Compound Key formed for Project Code Employee No
+knitr::kable(head(df1_2),
+             caption = "1NF Table 2")
+# To view entire table run df1_2 on the rmarkdown file 
+```
+
+# 1NF to 2NF Tables 
+```{r}
+# Project attribute table remains unchanged hence using the same df1_1 table 
+df2_1 <- df1_1
+knitr::kable(head(df2_1),
+             caption = "2NF Table 1")
+# To view entire table run df2_1 on the rmarkdown file 
+```
+
+```{r}
+# Above code filters out the the 1st, 2nd and 6th column 
+df2_2 <- df1_2[c(1,2,6)] # Compound key Project Code and Employee No (underlined)
+knitr::kable(head(df2_2),
+             caption = "2NF Table 2")
+# To view entire table run df2_2 on the rmarkdown file
+```
+
+```{r}
+df2_3 <- unique(df1_2[c(-1, -6)]) # Employee No attribute is a key in this table 
+knitr::kable(head(df2_3),
+             caption = "2NF Table 3")
+# To view entire table run df2_3 on the rmarkdown file
+```
+
+# 3NF Tables: Non-key Dependencies Removed 
+```{r}
+df3_1 <- df2_1 # Project attribute table remains unchanged hence using the same df2_1 table 
+#df3_1
+knitr::kable(head(df3_1),
+             caption = "3NF Table 1")
+# To view entire table run df3_1 on the rmarkdown file
+```
+
+
+```{r}
+df3_2 <- df2_2 # Compound Key Project code and Employee_No
+# NB: Ignore tables with zero or only one non-key attribute (these go straight to 3NF with no conversion).
+knitr::kable(head(df3_2),
+             caption = "3NF Table 2")
+# To view entire table run df3_2 on the rmarkdown file
+```
+
+```{r}
+df3_3 <- df2_3[c(-4)] #Primary Key Employee_No and Foreign key Department No*
+knitr::kable(head(df3_3),
+             caption = "3NF Table 3")
+# To view entire table run df3_3 on the rmarkdown file
+```
+
+```{r}
+df3_4 <- unique(df2_3[c(3,4)]) #Primary Key Department No (underlined)
+#df3_4
+knitr::kable(head(df3_4),
+             caption = "3NF Table 4")
+# To view entire table run df3_4 on the rmarkdown file
+```
