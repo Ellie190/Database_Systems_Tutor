@@ -90,21 +90,27 @@ df <- data.frame(Project_Code,Project_Title,Project_Manager,Project_Budget,Emplo
                  Department_No, Department_Name, Hourly_Rate)
 ```
 
-## Df Table (Unnormalised Form UNF)
+# Data Table 
 ```{r}
 datatable(df, # When placed in UNF possible Key: Project code
-          caption = "Project Management Report Unnormalized Form",
+          caption = "Project Management Report Sample data",
           rownames = T,
           filter = "top",
           options = list(pageLength = 10))
 ```
 
 
+# UNF Table (Unnormalised Form UNF)
+```{r}
+knitr::kable(df,
+             caption = "UNF Table")
+```
+
 # 1NF Tables: Repeating Attributes Removed 
 ```{r}
 # selects column 1 to 4 values that are not duplicates 
 df1_1 <- unique(df[, 1:4])
-knitr::kable(head(df1_1),
+knitr::kable(df1_1,
              caption = "1NF Table 1")
 # To view entire table run df1_1 on the rmarkdown file 
 ```
@@ -112,7 +118,7 @@ knitr::kable(head(df1_1),
 ```{r}
 # The follwing code excludes 2nd, 3rd and 4th column/attributes 
 df1_2 <- df[c(-2,-3,-4)] # Compound Key formed for Project Code Employee No
-knitr::kable(head(df1_2),
+knitr::kable(df1_2,
              caption = "1NF Table 2")
 # To view entire table run df1_2 on the rmarkdown file 
 ```
@@ -121,7 +127,7 @@ knitr::kable(head(df1_2),
 ```{r}
 # Project attribute table remains unchanged hence using the same df1_1 table 
 df2_1 <- df1_1
-knitr::kable(head(df2_1),
+knitr::kable(df2_1,
              caption = "2NF Table 1")
 # To view entire table run df2_1 on the rmarkdown file 
 ```
@@ -129,14 +135,14 @@ knitr::kable(head(df2_1),
 ```{r}
 # Above code filters out the the 1st, 2nd and 6th column 
 df2_2 <- df1_2[c(1,2,6)] # Compound key Project Code and Employee No (underlined)
-knitr::kable(head(df2_2),
+knitr::kable(df2_2,
              caption = "2NF Table 2")
 # To view entire table run df2_2 on the rmarkdown file
 ```
 
 ```{r}
-df2_3 <- unique(df1_2[c(-1, -6)]) # Employee No attribute is a key in this table 
-knitr::kable(head(df2_3),
+df2_3 <- unique(df1_2[c(-1, -6)]) # Employee_No (underlined) attribute is a key in this table 
+knitr::kable(df2_3,
              caption = "2NF Table 3")
 # To view entire table run df2_3 on the rmarkdown file
 ```
@@ -144,24 +150,24 @@ knitr::kable(head(df2_3),
 # 3NF Tables: Non-key Dependencies Removed 
 ```{r}
 df3_1 <- df2_1 # Project attribute table remains unchanged hence using the same df2_1 table 
-#df3_1
-knitr::kable(head(df3_1),
+#df3_1  # Primary key Project code 
+knitr::kable(df3_1,
              caption = "3NF Table 1")
 # To view entire table run df3_1 on the rmarkdown file
 ```
 
 
 ```{r}
-df3_2 <- df2_2 # Compound Key Project code and Employee_No
+df3_2 <- df2_2 # Foreign key Project* code and Employee_No*
 # NB: Ignore tables with zero or only one non-key attribute (these go straight to 3NF with no conversion).
-knitr::kable(head(df3_2),
+knitr::kable(df3_2,
              caption = "3NF Table 2")
 # To view entire table run df3_2 on the rmarkdown file
 ```
 
 ```{r}
 df3_3 <- df2_3[c(-4)] #Primary Key Employee_No and Foreign key Department No*
-knitr::kable(head(df3_3),
+knitr::kable(df3_3,
              caption = "3NF Table 3")
 # To view entire table run df3_3 on the rmarkdown file
 ```
@@ -169,7 +175,17 @@ knitr::kable(head(df3_3),
 ```{r}
 df3_4 <- unique(df2_3[c(3,4)]) #Primary Key Department No (underlined)
 #df3_4
-knitr::kable(head(df3_4),
+knitr::kable(df3_4,
              caption = "3NF Table 4")
 # To view entire table run df3_4 on the rmarkdown file
 ```
+
+# Relation schemas 
+- Project (code(underlined), title, manager, budget)
+- Hourly_Rate (Project code(FK), employee_No(FK), Hourly Rate)
+- Employee(Employee_No(underlined), Employee_Name, Department_No(FK))
+- Department(Department_No(underlined), Department_Name)
+
+- asterisks(*) indicates foreign key
+- underlined indicates a Key either primary, simple or compound
+- Used FK in place of (*) due to syntax
