@@ -3234,16 +3234,149 @@ Hourly_Rate &lt;- c(22.00,18.50,21.00,21.75,18.00,25.50,17.00,23.25,17.50,16.50)
 # Placing the attributes into a dataframe 
 df &lt;- data.frame(Project_Code,Project_Title,Project_Manager,Project_Budget,Employee_No,Employee_Name,
                  Department_No, Department_Name, Hourly_Rate)</code></pre>
-<div id="df-table-unnormalised-form-unf" class="section level2">
-<h2>Df Table (Unnormalised Form UNF)</h2>
+</div>
+<div id="data-table" class="section level1">
+<h1>Data Table</h1>
 <pre class="r"><code>datatable(df, # When placed in UNF possible Key: Project code
-          caption = &quot;Project Management Report Unnormalized Form&quot;,
+          caption = &quot;Project Management Report Sample data&quot;,
           rownames = T,
           filter = &quot;top&quot;,
           options = list(pageLength = 10))</code></pre>
-<div id="htmlwidget-c9863e0435c034d8a801" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-c9863e0435c034d8a801">{"x":{"filter":"top","filterHTML":"<tr>\n  <td><\/td>\n  <td data-type=\"factor\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"width: 100%; display: none;\">\n      <select multiple=\"multiple\" style=\"width: 100%;\" data-options=\"[&quot;PC010&quot;,&quot;PC045&quot;,&quot;PC064&quot;]\"><\/select>\n    <\/div>\n  <\/td>\n  <td data-type=\"factor\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"width: 100%; display: none;\">\n      <select multiple=\"multiple\" style=\"width: 100%;\" data-options=\"[&quot;HR System&quot;,&quot;Pensions System&quot;,&quot;Salaries System&quot;]\"><\/select>\n    <\/div>\n  <\/td>\n  <td data-type=\"factor\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"width: 100%; display: none;\">\n      <select multiple=\"multiple\" style=\"width: 100%;\" data-options=\"[&quot;H Martin&quot;,&quot;K lewis&quot;,&quot;M Phillips&quot;]\"><\/select>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none; position: absolute; width: 200px;\">\n      <div data-min=\"12250\" data-max=\"24500\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"factor\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"width: 100%; display: none;\">\n      <select multiple=\"multiple\" style=\"width: 100%;\" data-options=\"[&quot;S10001&quot;,&quot;S10010&quot;,&quot;S10030&quot;,&quot;S10034&quot;,&quot;S13210&quot;,&quot;S21010&quot;,&quot;S31002&quot;]\"><\/select>\n    <\/div>\n  <\/td>\n  <td data-type=\"factor\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"width: 100%; display: none;\">\n      <select multiple=\"multiple\" style=\"width: 100%;\" data-options=\"[&quot;A Smith&quot;,&quot;B James&quot;,&quot;B Jones&quot;,&quot;L Jones&quot;,&quot;P Lewis&quot;,&quot;T Gilbert&quot;,&quot;W Richards&quot;]\"><\/select>\n    <\/div>\n  <\/td>\n  <td data-type=\"factor\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"width: 100%; display: none;\">\n      <select multiple=\"multiple\" style=\"width: 100%;\" data-options=\"[&quot;L004&quot;,&quot;L008&quot;,&quot;L009&quot;,&quot;L023&quot;,&quot;L028&quot;]\"><\/select>\n    <\/div>\n  <\/td>\n  <td data-type=\"factor\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"width: 100%; display: none;\">\n      <select multiple=\"multiple\" style=\"width: 100%;\" data-options=\"[&quot;Database&quot;,&quot;HR&quot;,&quot;IT&quot;,&quot;Pesnions&quot;,&quot;Salary&quot;]\"><\/select>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none; position: absolute; width: 200px;\">\n      <div data-min=\"16.5\" data-max=\"25.5\" data-scale=\"2\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","caption":"<caption>Project Management Report Unnormalized Form<\/caption>","data":[["1","2","3","4","5","6","7","8","9","10"],["PC010","PC010","PC010","PC045","PC045","PC045","PC045","PC064","PC064","PC064"],["Pensions System","Pensions System","Pensions System","Salaries System","Salaries System","Salaries System","Salaries System","HR System","HR System","HR System"],["M Phillips","M Phillips","M Phillips","H Martin","H Martin","H Martin","H Martin","K lewis","K lewis","K lewis"],[24500,24500,24500,17400,17400,17400,17400,12250,12250,12250],["S10001","S10030","S21010","S10010","S10001","S31002","S13210","S31002","S21010","S10034"],["A Smith","L Jones","P Lewis","B Jones","A Smith","T Gilbert","W Richards","T Gilbert","P Lewis","B James"],["L004","L023","L004","L004","L004","L028","L008","L028","L004","L009"],["IT","Pesnions","IT","IT","IT","Database","Salary","Database","IT","HR"],[22,18.5,21,21.75,18,25.5,17,23.25,17.5,16.5]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Project_Code<\/th>\n      <th>Project_Title<\/th>\n      <th>Project_Manager<\/th>\n      <th>Project_Budget<\/th>\n      <th>Employee_No<\/th>\n      <th>Employee_Name<\/th>\n      <th>Department_No<\/th>\n      <th>Department_Name<\/th>\n      <th>Hourly_Rate<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":10,"columnDefs":[{"className":"dt-right","targets":[4,9]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"orderCellsTop":true}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-028ac58039ec92e91545" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-028ac58039ec92e91545">{"x":{"filter":"top","filterHTML":"<tr>\n  <td><\/td>\n  <td data-type=\"factor\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"width: 100%; display: none;\">\n      <select multiple=\"multiple\" style=\"width: 100%;\" data-options=\"[&quot;PC010&quot;,&quot;PC045&quot;,&quot;PC064&quot;]\"><\/select>\n    <\/div>\n  <\/td>\n  <td data-type=\"factor\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"width: 100%; display: none;\">\n      <select multiple=\"multiple\" style=\"width: 100%;\" data-options=\"[&quot;HR System&quot;,&quot;Pensions System&quot;,&quot;Salaries System&quot;]\"><\/select>\n    <\/div>\n  <\/td>\n  <td data-type=\"factor\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"width: 100%; display: none;\">\n      <select multiple=\"multiple\" style=\"width: 100%;\" data-options=\"[&quot;H Martin&quot;,&quot;K lewis&quot;,&quot;M Phillips&quot;]\"><\/select>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none; position: absolute; width: 200px;\">\n      <div data-min=\"12250\" data-max=\"24500\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"factor\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"width: 100%; display: none;\">\n      <select multiple=\"multiple\" style=\"width: 100%;\" data-options=\"[&quot;S10001&quot;,&quot;S10010&quot;,&quot;S10030&quot;,&quot;S10034&quot;,&quot;S13210&quot;,&quot;S21010&quot;,&quot;S31002&quot;]\"><\/select>\n    <\/div>\n  <\/td>\n  <td data-type=\"factor\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"width: 100%; display: none;\">\n      <select multiple=\"multiple\" style=\"width: 100%;\" data-options=\"[&quot;A Smith&quot;,&quot;B James&quot;,&quot;B Jones&quot;,&quot;L Jones&quot;,&quot;P Lewis&quot;,&quot;T Gilbert&quot;,&quot;W Richards&quot;]\"><\/select>\n    <\/div>\n  <\/td>\n  <td data-type=\"factor\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"width: 100%; display: none;\">\n      <select multiple=\"multiple\" style=\"width: 100%;\" data-options=\"[&quot;L004&quot;,&quot;L008&quot;,&quot;L009&quot;,&quot;L023&quot;,&quot;L028&quot;]\"><\/select>\n    <\/div>\n  <\/td>\n  <td data-type=\"factor\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"width: 100%; display: none;\">\n      <select multiple=\"multiple\" style=\"width: 100%;\" data-options=\"[&quot;Database&quot;,&quot;HR&quot;,&quot;IT&quot;,&quot;Pesnions&quot;,&quot;Salary&quot;]\"><\/select>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none; position: absolute; width: 200px;\">\n      <div data-min=\"16.5\" data-max=\"25.5\" data-scale=\"2\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","caption":"<caption>Project Management Report Sample data<\/caption>","data":[["1","2","3","4","5","6","7","8","9","10"],["PC010","PC010","PC010","PC045","PC045","PC045","PC045","PC064","PC064","PC064"],["Pensions System","Pensions System","Pensions System","Salaries System","Salaries System","Salaries System","Salaries System","HR System","HR System","HR System"],["M Phillips","M Phillips","M Phillips","H Martin","H Martin","H Martin","H Martin","K lewis","K lewis","K lewis"],[24500,24500,24500,17400,17400,17400,17400,12250,12250,12250],["S10001","S10030","S21010","S10010","S10001","S31002","S13210","S31002","S21010","S10034"],["A Smith","L Jones","P Lewis","B Jones","A Smith","T Gilbert","W Richards","T Gilbert","P Lewis","B James"],["L004","L023","L004","L004","L004","L028","L008","L028","L004","L009"],["IT","Pesnions","IT","IT","IT","Database","Salary","Database","IT","HR"],[22,18.5,21,21.75,18,25.5,17,23.25,17.5,16.5]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Project_Code<\/th>\n      <th>Project_Title<\/th>\n      <th>Project_Manager<\/th>\n      <th>Project_Budget<\/th>\n      <th>Employee_No<\/th>\n      <th>Employee_Name<\/th>\n      <th>Department_No<\/th>\n      <th>Department_Name<\/th>\n      <th>Hourly_Rate<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":10,"columnDefs":[{"className":"dt-right","targets":[4,9]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"orderCellsTop":true}},"evals":[],"jsHooks":[]}</script>
 </div>
+<div id="unf-table-unnormalised-form-unf" class="section level1">
+<h1>UNF Table (Unnormalised Form UNF)</h1>
+<pre class="r"><code>knitr::kable(df,
+             caption = &quot;UNF Table&quot;)</code></pre>
+<table>
+<caption>UNF Table</caption>
+<thead>
+<tr class="header">
+<th align="left">Project_Code</th>
+<th align="left">Project_Title</th>
+<th align="left">Project_Manager</th>
+<th align="right">Project_Budget</th>
+<th align="left">Employee_No</th>
+<th align="left">Employee_Name</th>
+<th align="left">Department_No</th>
+<th align="left">Department_Name</th>
+<th align="right">Hourly_Rate</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">PC010</td>
+<td align="left">Pensions System</td>
+<td align="left">M Phillips</td>
+<td align="right">24500</td>
+<td align="left">S10001</td>
+<td align="left">A Smith</td>
+<td align="left">L004</td>
+<td align="left">IT</td>
+<td align="right">22.00</td>
+</tr>
+<tr class="even">
+<td align="left">PC010</td>
+<td align="left">Pensions System</td>
+<td align="left">M Phillips</td>
+<td align="right">24500</td>
+<td align="left">S10030</td>
+<td align="left">L Jones</td>
+<td align="left">L023</td>
+<td align="left">Pesnions</td>
+<td align="right">18.50</td>
+</tr>
+<tr class="odd">
+<td align="left">PC010</td>
+<td align="left">Pensions System</td>
+<td align="left">M Phillips</td>
+<td align="right">24500</td>
+<td align="left">S21010</td>
+<td align="left">P Lewis</td>
+<td align="left">L004</td>
+<td align="left">IT</td>
+<td align="right">21.00</td>
+</tr>
+<tr class="even">
+<td align="left">PC045</td>
+<td align="left">Salaries System</td>
+<td align="left">H Martin</td>
+<td align="right">17400</td>
+<td align="left">S10010</td>
+<td align="left">B Jones</td>
+<td align="left">L004</td>
+<td align="left">IT</td>
+<td align="right">21.75</td>
+</tr>
+<tr class="odd">
+<td align="left">PC045</td>
+<td align="left">Salaries System</td>
+<td align="left">H Martin</td>
+<td align="right">17400</td>
+<td align="left">S10001</td>
+<td align="left">A Smith</td>
+<td align="left">L004</td>
+<td align="left">IT</td>
+<td align="right">18.00</td>
+</tr>
+<tr class="even">
+<td align="left">PC045</td>
+<td align="left">Salaries System</td>
+<td align="left">H Martin</td>
+<td align="right">17400</td>
+<td align="left">S31002</td>
+<td align="left">T Gilbert</td>
+<td align="left">L028</td>
+<td align="left">Database</td>
+<td align="right">25.50</td>
+</tr>
+<tr class="odd">
+<td align="left">PC045</td>
+<td align="left">Salaries System</td>
+<td align="left">H Martin</td>
+<td align="right">17400</td>
+<td align="left">S13210</td>
+<td align="left">W Richards</td>
+<td align="left">L008</td>
+<td align="left">Salary</td>
+<td align="right">17.00</td>
+</tr>
+<tr class="even">
+<td align="left">PC064</td>
+<td align="left">HR System</td>
+<td align="left">K lewis</td>
+<td align="right">12250</td>
+<td align="left">S31002</td>
+<td align="left">T Gilbert</td>
+<td align="left">L028</td>
+<td align="left">Database</td>
+<td align="right">23.25</td>
+</tr>
+<tr class="odd">
+<td align="left">PC064</td>
+<td align="left">HR System</td>
+<td align="left">K lewis</td>
+<td align="right">12250</td>
+<td align="left">S21010</td>
+<td align="left">P Lewis</td>
+<td align="left">L004</td>
+<td align="left">IT</td>
+<td align="right">17.50</td>
+</tr>
+<tr class="even">
+<td align="left">PC064</td>
+<td align="left">HR System</td>
+<td align="left">K lewis</td>
+<td align="right">12250</td>
+<td align="left">S10034</td>
+<td align="left">B James</td>
+<td align="left">L009</td>
+<td align="left">HR</td>
+<td align="right">16.50</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div id="nf-tables-repeating-attributes-removed" class="section level1">
 <h1>1NF Tables: Repeating Attributes Removed</h1>
