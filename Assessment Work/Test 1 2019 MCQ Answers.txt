@@ -1,0 +1,18 @@
+Question 1 Multiple choice 
+a) T
+b) T
+c) F
+d) F
+e) T
+f) T
+g) F
+
+
+Generalization is like a bottom-up approach in which two or more entities of lower level combine
+to form a higher level entity if they have some attributes in common.
+
+Specialization is a process in which an entity is divided into sub-entities. 
+You can think of it as a reverse process of generalization, in generalization two entities combine together
+to form a new higher level entity. Specialization is a top-down process.
+
+NB: For normalisation also check examples of how to normalize invoices 
