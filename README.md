@@ -16,7 +16,7 @@ https://www.youtube.com/watch?v=IfZPy5uBgHE&list=PL-KSt1w_h7KnM73k8glIpd0xT6p9JT
 - **Employees Database Structure:** https://dev.mysql.com/doc/employee/en/sakila-structure.html
 
 **Overview** <br>
-- Created an Employees database on MySQL workbench using the downloaded *Employees DB on GiHub*
+- Created an Employees database on MySQL workbench using the downloaded *Employees DB on GitHub*
 - Performed feature engineering on joined tables to obtain Hire Age and Current Age, Monthly and Daily salary, break down dates into Day, Month and Year. 
 - Utilized Data Visualisation to figure hiring patterns, acceptable, satisfying and lasting salaries and average work years. 
 - Built a dashboard to showcase results 
