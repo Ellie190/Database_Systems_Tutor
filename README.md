@@ -13,13 +13,13 @@ https://www.youtube.com/watch?v=IfZPy5uBgHE&list=PL-KSt1w_h7KnM73k8glIpd0xT6p9JT
 - **Resources:** MySQL Installer - Community, MySQL workbench, R
 - **Data:** Employees Sample Database-https://dev.mysql.com/doc/employee/en/
 - **Employees DB on GitHub:** https://github.com/datacharmer/test_db
-- **Employees Database Structure:https://dev.mysql.com/doc/employee/en/sakila-structure.html**
+- **Employees Database Structure:** https://dev.mysql.com/doc/employee/en/sakila-structure.html
 
 **Overview** <br>
 - Created a Employees database on MySQL workbench using the downloaded *Employees DB on GiHub*
 - Performed feature engineering on joined tables to obtain Hire Age and Current Age, Monthly and Daily salary, break down dates into Day, Month and Year. 
 - Data Visualisation to figure hiring patterns, acceptable, satifying and lasting salaries and average work years. 
-- Build a dashboard to showcase results 
+- Built a dashboard to showcase results 
 
 ![alt text](https://github.com/Ellie190/Database_Systems_Tutor/blob/master/Project/Dashboard_Tab1.png "Dashboard Tab 1")
 ![alt text](https://github.com/Ellie190/Database_Systems_Tutor/blob/master/Project/Dashboard_Tab2.png "Dashboard Tab 2")
