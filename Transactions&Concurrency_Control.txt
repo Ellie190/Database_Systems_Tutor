@@ -1,0 +1,57 @@
+Transaction Management and Concurrency Control 
+
+CHECK QUERY -> Transaction options 
+
+WHAT IS A TRANSACTION
+- Any action that reads from and/or writes to a database may consist of SELECT UPDATE or INSERT
+- A logical unit of work that must be either entirely completed or aborted
+- Not all transactions update the database
+- SQL code represents a transaction because database was accessed
+Transaction Processing - Queries to the database
+TRANSACTION PROPERTIES - Atomicity, Durability, Serializability, Isolation, Consistency
+
+LOGICAL UNIT OF WORK 
+NB: A transaction is a logical unit of work. Each transaction is a sequence of logically related commands
+ that accomplish one task and transform the database from one consistent state into another
+ 
+ What are the advantages of current transactions ???
+ - Improved throughput & Resource utilization 
+ - Reduced Waiting time
+ 
+ TRANSACTION LOG (like a phone log)
+ Keeps track of all transactions that update the database
+ - A record for the beginning of transaction
+- For each transaction component (SQL statement - UPDATE, DELETE and INSERT) 
+- The ending (COMMIT) of the transaction
+* Increases Processing overhead - In computers, overhead refers to the processing time required by system software.
+* Can restore the database to a previous state 
+
+TRANSACTION STATES 
+- Active, Partially committed, Failed, Aborted, Committed
+
+CONCURRENCY CONTROL 
+Concurrency Control - The coordination of the simultaneous execution of transactions in a multiuser database system
+                    - Keyword: Coordination, Simultaneous and Multiprocessing 
+- The objective of concurrency control is to ensure the serializability of transactions in a multiuser database environment
+- Important -> simultaneous execution of transactions over a shared database can create several data integrity and consistency problems
+THREE MAIN PROBLEMS (CONCURRENCY CONTROL)
+ - lost updates, uncommitted data, inconsistent retrievals 
+
+LOST UPDATE 
+The lost update problem occurs when two concurrent transactions, T1 and T2, 
+are updating the same data element and one of the updates is lost (overwritten by the other transaction)
+
+UNCOMMITTED DATA PROBLEM 
+- The phenomenon of uncommitted data occurs when two transactions, T1 and T2, are executed concurrently and the first transaction (T1) is 
+rolled back after the second transaction (T2) has already accessed the uncommitted data—thus violating the isolation property of transactions.
+
+INCONSISTENT RETRIEVALS
+
+
+
+ Transaction
+ 
+ Check MySQL: Recovering Transactions
+ 
+ -- Showing storing data and recovering data when you have inserted incorrect data
+ -- Can always make use of rollbacks when discovering inaccurate or invalid data

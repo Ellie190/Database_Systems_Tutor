@@ -1,0 +1,105 @@
+
+HOW TO DOWNLOAD AND INSTALL THE EMPLOYEES SAMPLE DATABASE
+1.  Google Search: MySQL Employees database (https://dev.mysql.com/doc/employee/en/ )
+2.  Goto Installation -> Click on Employees DB on GitHub (https://github.com/datacharmer/test_db) -> Check employees.sql file (and exit) -> download the Zip file
+3.  Copy/Extract downloaded file to desktop 
+
+OPEN MYSQL WORKBENCH  
+1. Click on "Open a SQL script file in a new query tab"
+2. Open the employees.sql file 
+3. Click on file in MySQL workbench -> Run SQL Script -> choose the employees.sql file -> click open 
+4. Click Run (NB! Script will take time to run depending on your PC) -> close when run is complete 
+5. Refresh schema 
+
+EXPLORE THE DATABASE 
+1. Goto https://dev.mysql.com/doc/employee/en/employees-installation.html and click Employees structure on the left 
+
+CODE SNIPPET
+use employees;
+
+select * from employees; -- Select all columns (attributes) from employees table 
+select count(*) from employees; -- Count the returned records 
+
+R 
+CONNECT TO DATABASE USING PYTHON 
+Different R packages 
+MySQL - RMySQL 
+PostgresSQL - RPostgresSQL 
+Oracle Database - ROracle 
+Conventions specified in DBI 
+
+Tutorials
+Check: https://www.tutorialspoint.com/r/r_database.htm
+check2: https://www.slideshare.net/RsquaredIn/rmysql-tutorial-for-beginners
+check3: https://gist.github.com/aravindhebbali/f2cc73794e9f9bfaa673
+check4: https://www.javatpoint.com/r-database
+install.packages("RMySQL")
+library(DBI) # library (RMySQL) not required
+
+Connect to database 
+CODE SNIPPET
+con <- dbConnect(RMySQL::MySQL(),
+         dbname = "company",
+		 host = "courses.csrrinzqubik.us-east-1.rds.amazonaws.com",
+		 port = 3306,
+		 user = "student",
+		 password = "datacamp")
+		 
+		 
+PYTHON 
+CONNECT TO DATABASE USING PYTHON 
+Python needs a MySQL driver to access the MySQL database.
+Install: python -m pip install mysql-connector-python
+
+Test Connection 
+Create Connection
+Start by creating a connection to the database.
+
+Use the username and password from your MySQL database:
+
+CODE SNIPPET
+
+import mysql.connector
+
+mydb = mysql.connector.connect(
+  host="localhost",
+  user="yourusername",
+  password="yourpassword"
+)
+
+print(mydb)
+
+
+Connecting to a specific database 
+import mysql.connector
+
+mydb = mysql.connector.connect(
+  host="localhost",
+  user="yourusername",
+  password="yourpassword",
+  database="mydatabase"
+)
+
+-- CREATING A VIRTUAL ENVIRONMENT ON PYTHON
+-- Virtual Environment on Python 
+conda create -n dbs_class python=3.8 (use 3.6.5) (click yes after)
+conda activate dbs_class 
+pip install mysql-connector-python
+
+-- IMPORT DATA INTO MYSQL WORKBENCH 
+- Goto schemas 
+- make use of a database in the schema/ create one and use it
+- click on tables then click Table data import wizard 
+- Pick the table 
+
+NB 
+THINGS THAT CAN BE DONE
+- feature engineering (creating new attributes from existing attributes) *
+- Build a machine learning model 
+- Observer significance of variables, to determine useful variables for the model
+- Search how to create new tables from queries. *
+- Data can be used to figure hiring patterns, acceptable salaries, lasting salaries *
+- Average work years, satifying start salary or later employed salary *
+- Forecast the growth of slaries *
+- Data visualisation *
+- Build a dashboard to showcase insights * 
