@@ -18,7 +18,7 @@ https://www.youtube.com/watch?v=IfZPy5uBgHE&list=PL-KSt1w_h7KnM73k8glIpd0xT6p9JT
 **Overview** <br>
 - Created a Employees database on MySQL workbench using the downloaded *Employees DB on GiHub*
 - Performed feature engineering on joined tables to obtain Hire Age and Current Age, Monthly and Daily salary, break down dates into Day, Month and Year. 
-- Data Visualisation to figure hiring patterns, acceptable, satifying and lasting salaries and average work years. 
+- Utilized Data Visualisation to figure hiring patterns, acceptable, satisfying and lasting salaries and average work years. 
 - Built a dashboard to showcase results 
 
 ![alt text](https://github.com/Ellie190/Database_Systems_Tutor/blob/master/Project/Dashboard_Tab1.png "Dashboard Tab 1")
