@@ -5,6 +5,8 @@ All Tutor work for database systems will be uploaded here.
 **Database normalization:** https://database.blog/database-normalization/ <br>
 **Concurrency Problems:** http://www.myreadingroom.co.in/notes-and-studymaterial/65-dbms/532-concurrency-problems.html <br>
 **Concurrent Transactions:** https://www.slideshare.net/sajan45/concurrent-transactions <br>
+**Starvation and Deadlock in OS:** https://www.tutorialspoint.com/starvation-and-deadlock <br>
+**DBMS - Deadlock:** https://www.tutorialspoint.com/dbms/dbms_deadlock.htm <br> 
 
 ## Learn SQL with MySQL (Youtube Playlist)
 https://www.youtube.com/watch?v=IfZPy5uBgHE&list=PL-KSt1w_h7KnM73k8glIpd0xT6p9JTB_z
