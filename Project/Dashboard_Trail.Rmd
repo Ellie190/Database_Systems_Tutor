@@ -1,0 +1,400 @@
+---
+title: "Employees Dashboard"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: rows
+    vertical_layout: fill
+    social: ["twitter", "facebook", "menu"]
+---
+
+```{r setup, include=FALSE, warning=FALSE, message=FALSE}
+library(flexdashboard)
+library(stringr)
+library(tidyverse)
+library(lubridate)
+library(hms)
+library(scales)
+library(highcharter)
+library(stringr)
+library(tidyverse)
+library(lubridate)
+library(ggplot2)
+library(plotly)
+library(car)
+library(rgl)
+library(ggcorrplot)
+library(xts)
+library(dygraphs)
+library(taRifx)
+library(xlsx)
+library(knitr)
+library(DT)
+library(rpivotTable)
+library(ggvis)
+library(openintro)
+```
+
+
+```{r warning=FALSE, message=FALSE}
+source("Dbs_Connection.R")
+```
+
+
+```{r warning=FALSE, message=FALSE}
+#Listing Tables 
+#dbListTables(con)
+```
+
+
+```{r warning=FALSE, message=FALSE}
+#Querying the Tables 
+
+#Creating Employee and Title joined table 
+## Employees and title inner Join (Employee Title)
+result1 <- dbSendQuery(con,
+"select employees.emp_no, employees.gender as 'Gender', (year(employees.hire_date) - year(employees.birth_date)) as 'Hire Age',
+dayname(employees.hire_date) as 'Hire Weekday', day(employees.hire_date) as 'Hire Day',
+monthname(employees.hire_date) as 'Hire Month', year(employees.hire_date) as 'Hire Year',
+titles.title as 'Title' from employees inner join titles on employees.emp_no = titles.emp_no")
+```
+
+```{r warning=FALSE, message=FALSE}
+## Fetch all the records(with n = -1) and store it as a data frame.
+## let n equal to the number of records you want to capture for e.g. n = 10 000 
+df1 <- fetch(result1, n = -1)
+# datatable(df1, 
+#           caption = "Employees and Title Table",
+#           rownames = T,
+#           filter = "top",
+#           options = list(pagelenght = 10))
+```
+
+
+
+```{r warning=FALSE, message=FALSE}
+## Titles and salary inner join (Title Salary)
+result2 <- dbSendQuery(con, 
+"select titles.emp_no, titles.title as 'Title', salaries.salary as 'Annual Salary', 
+round((salaries.salary / 365), 0) as 'Daily Salary', round((salaries.salary / 52), 0) as 'Weekly', 
+round((salaries.salary / 12), 0) as 'Monthly salary' from titles inner join salaries on titles.emp_no = salaries.emp_no")
+```
+
+
+```{r warning=FALSE, message=FALSE}
+df2 <- fetch(result2, n = -1)
+# datatable(df2, 
+#           caption = "Title Salary Table",
+#           rownames = T,
+#           filter = "top",
+#           options = list(pagelenght = 10))
+```
+
+```{r warning=FALSE, message=FALSE}
+## Departments, department manager and salaries inner join (Department Manager Salary)
+result3 <- dbSendQuery(con, "select dept_manager.emp_no, dept_manager.dept_no,
+departments.dept_name as 'Department Name', salaries.salary as 'Annual Salary',
+round((salaries.salary / 12), 0) as 'Monthly Salary' from ((dept_manager 
+inner join departments on dept_manager.dept_no = departments.dept_no)
+inner join salaries on dept_manager.emp_no = salaries.emp_no)")
+```
+
+```{r warning=FALSE, message=FALSE}
+df3 <- fetch(result3, n = -1)
+# datatable(df3, 
+#           caption = "Department Manager Salary",
+#           rownames = T,
+#           filter = "top",
+#           options = list(pagelenght = 10))
+```
+
+
+```{r warning=FALSE, message=FALSE}
+##  Employees and Salary inner join (Employee Salary)
+result4 <- dbSendQuery(con, 
+"select employees.emp_no, employees.birth_date, employees.first_name as 'First Name', employees.last_name as 'Last Name',
+employees.gender as 'Gender', employees.hire_date, (2020 - year(employees.birth_date)) as 'Current Age',
+(year(employees.hire_date) - year(employees.birth_date)) as 'Hire Age',
+salaries.salary as 'Annual Salary', round((salaries.salary / 365), 0) as 'Daily Salary', round((salaries.salary / 52), 0) as 'Weekly', 
+round((salaries.salary / 12), 0) as 'Monthly salary' from employees inner join salaries on employees.emp_no = salaries.emp_no;")
+```
+
+```{r warning=FALSE, message=FALSE}
+df4 <- fetch(result4, n = -1)
+# datatable(df4, 
+#           caption = "Employees Salary Table",
+#           rownames = T,
+#           filter = "top",
+#           options = list(pagelenght = 10))
+```
+
+
+```{r}
+resulta <- dbSendQuery(con,
+"select count(distinct dept_name) as 'Department Count' from departments")
+```
+
+```{r}
+dfa <- fetch(resulta, n = -1)
+```
+
+```{r}
+resultb <- dbSendQuery(con,
+"select count(emp_no) as 'Employees Count in department' from dept_emp")
+```
+
+```{r}
+dfb <- fetch(resultb, n = -1)
+```
+
+```{r}
+resultc <- dbSendQuery(con,
+"select count(distinct emp_no) as 'Department Manager Count' from dept_manager")
+```
+
+```{r}
+dfc <- fetch(resultc, n = -1)
+```
+
+```{r}
+resultd <- dbSendQuery(con,
+"select count(distinct emp_no) as 'Employees Count' from employees")
+```
+
+```{r}
+dfd <- fetch(resultd, n = -1)
+```
+
+```{r}
+resulte <- dbSendQuery(con,
+"select count(emp_no) as 'Number of Paid salary' from salaries")
+```
+
+```{r}
+dfe <- fetch(resulte, n = -1)
+```
+
+```{r}
+resultf <- dbSendQuery(con,
+"select count(distinct title) as 'Title Count' from titles")
+```
+
+```{r}
+dff <- fetch(resultf, n = -1)
+```
+
+
+Dash {data-icon="fa-user-plus"}
+========================
+
+Row{data-height=250}
+-----------------------------------------------------------------------
+
+### Employees
+
+```{r}
+valueBox(dfd[1,1], icon = "fa-address-card",
+         color = "orange")
+```
+
+### Male and Female with Work Titles
+```{r warning=FALSE, message=FALSE}
+## Gender Male vs Female 
+## Counting the number of Males and Females and computing the percent of each gender 
+mf <- df1 %>% 
+  group_by(Gender) %>% 
+  summarise(n = n()) %>% 
+  mutate(pct = n/sum(n),
+         lbl = scales::percent(pct))
+## A pie part to display percent chunks
+g1 <- plot_ly(mf) %>%
+  add_pie(labels = mf$Gender, values = mf$n, hole=0.5) %>% 
+  layout(legend=list(title=list(text='<b> Gender </b>')))
+g1
+```
+
+### Male and Female Average Annual Salary Ratio
+```{r warning=FALSE, message=FALSE}
+# Average Annual Salary for Males and Females
+g9df4 <- df4 %>% 
+  group_by(Gender) %>% 
+  summarise(average_salary = mean(`Annual Salary`),
+            average_hire_age = mean(`Hire Age`))
+
+g9 <- plot_ly(g9df4, type = 'pie', labels=g9df4$Gender, values=g9df4$average_salary,
+              textinfo = 'label+percent',
+              insidetextorientation = 'radial') %>% 
+    layout(legend=list(title=list(text='<b> Gender </b>')))
+  
+g9
+```
+
+Row 
+-------------------------------------
+
+
+### Average Hire Age on Job Titles
+```{r warning=FALSE, message=FALSE}
+## Average Hire Age based on Job Titles 
+g2 <- df1 %>% 
+  group_by(Title) %>% 
+  summarise(Average_age = round(mean(`Hire Age`), 0),) %>% 
+  ggplot(aes(x = Title, y = Average_age)) +
+  geom_bar(stat = "identity", fill = "#69b3a2", color="#e9ecef", alpha=0.9 ) +
+  coord_flip() +
+  labs(fill = "Gender",
+       y = "Age") +
+  theme_minimal()
+ggplotly(g2)
+```
+
+### Monthly Hires
+```{r warning=FALSE, message=FALSE}
+## Month with the most Hires 
+g3df1 <- df1 %>% 
+  group_by(`Hire Month`) %>% 
+  summarise(n = n()) %>% 
+  mutate(pct = n/sum(n),
+         lbl = scales::percent(pct))
+
+# Re-order Months
+g3df1$`Hire Month` <- factor(g3df1$`Hire Month`, levels = c("January","February",
+                                                            "March","April","May",
+                                                            "June","July","August",
+                                                            "September","October",
+                                                            "November","December"))
+g3df1 <- g3df1[order(g3df1$`Hire Month`), ]
+# g3df1
+
+## Chances of successful hire can be observed here 
+g3 <- g3df1 %>% 
+  ggplot(aes(x = `Hire Month`, y = pct)) +
+  geom_bar(stat = "identity",
+           fill = "cornflowerblue") +
+  coord_flip() +
+  geom_text(aes(label = lbl),
+            vjust = -0.25) +
+  scale_y_continuous(labels = percent) +
+  labs(x = "Hire Month",
+       y = "Percent") +
+  theme_minimal()
+
+ggplotly(g3)
+```
+
+Dash-B {data-icon="fa-balance-scale"}
+===============================================
+
+Row {data-height=200}
+-----------------------
+
+### Departments 
+```{r}
+valueBox(dfa[1,1], icon = "fa-building",
+         color = "green")
+```
+
+
+### Department Employees
+```{r}
+valueBox(dfb[1,1], icon = "fa-users",
+         color = "orange")
+```
+
+
+### Department Managers
+```{r}
+valueBox(dfc[1,1], icon = "fa-tasks",
+         color = "info")
+```
+
+
+### Number of Paid Salary
+```{r}
+valueBox(dfe[1,1], icon = "fa-wallet")
+```
+
+
+### Job Titles
+```{r}
+valueBox(dff[1,1], icon = "fa-book")
+```
+
+
+Row 
+----------------------
+
+### Average Annual Salary by Title
+```{r warning=FALSE, message=FALSE}
+g4df2 <- df2 %>% 
+  group_by(Title) %>% 
+  summarise(average_salary = mean(`Annual Salary`))
+
+g4b <- g4df2 %>% 
+  ggplot(aes(y = Title, x = average_salary, 
+             color = Title)) +
+  geom_jitter(alpha = 0.7,
+              size = 14) +
+  labs(x = "Salary ($)",
+       y = "") +
+  theme_minimal() +
+  theme(legend.position = "none")
+
+ggplotly(g4b)
+```
+
+### Monthly Salary Distribution by Title
+```{r warning=FALSE, message=FALSE}
+## Salary Distribution 
+g5 <- df2 %>% 
+  ggplot(aes(x = `Monthly salary`)) +
+  geom_density(fill = "#69b3a2", color="#e9ecef", alpha=0.7, bw=10) +
+  theme_minimal()
+
+ggplotly(g5)
+
+```
+
+
+
+
+Row
+------------------------ 
+
+
+### Salary Distribution by Department
+```{r warning=FALSE, message=FALSE}
+g7 <- df3 %>% 
+  ggplot(aes(x = `Department Name`,
+             y = `Annual Salary`)) +
+  geom_boxplot(width = .2,
+               fill = "orange",
+               outlier.colour = "orange",
+               outlier.size = 2) +
+  labs(y = "Salary",
+       x = "Deparment") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45))
+
+ggplotly(g7)
+```
+
+### Hired Employees Annual Salary over the years
+```{r warning=FALSE, message=FALSE}
+## Salary over Hiring years 
+g8 <- df4 %>% 
+  ggplot(aes(x = as.Date(hire_date), y = `Annual Salary`)) +
+  geom_line(color = "indianred3",
+            size = 1) +
+  geom_smooth(color = "blue",
+              formula = y ~ poly(x,2),
+              method = "lm") +
+  scale_x_date(date_breaks = '3 year',
+               labels = date_format("%Y")) +
+  labs(x = 'Year',
+       y = "Annual Salary") +
+  theme_minimal()
+ggplotly(g8)
+```
+
+
+
